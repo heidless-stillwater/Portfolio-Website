@@ -27,7 +27,7 @@ const About = () => {
         })
         .catch(err => console.log(err));
     };
-
+    
     React.useEffect(() => {
         fetchAbout();
     }, []);

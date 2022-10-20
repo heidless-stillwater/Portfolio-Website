@@ -11,6 +11,12 @@ environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+print("****************************")
+print("****************************")
+print("BASE_DIR:", BASE_DIR)
+print("****************************")
+print("****************************")
+
 
 SECRET_KEY = env('SECRET_KEY')
 
@@ -18,7 +24,11 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'backend',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -45,6 +55,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -148,5 +159,11 @@ CORS_ALLOWED_ORIGINS = [
     env('FRONTEND_URL'),
 ]
 
-
 FILE_UPLOAD_PERMISSIONS=0o640
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = 'AKIAYUPGERUWX4LIA47Z'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'hpfolio-upload-bucket'
+AWS_QUERYSTRING_AUTH = False
