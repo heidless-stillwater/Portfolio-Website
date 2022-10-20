@@ -158,7 +158,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     env('FRONTEND_URL'),
 ]
-
+ 
 FILE_UPLOAD_PERMISSIONS=0o640
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
