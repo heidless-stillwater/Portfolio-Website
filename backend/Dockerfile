@@ -7,6 +7,7 @@ WORKDIR /backend
 COPY ./Pipfile* ./
 RUN pipenv sync
 COPY . .
+ENV PORT ${PORT}
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod o+x /entrypoint.sh
 ENTRYPOINT ["sh", "-c", "/entrypoint.sh"]

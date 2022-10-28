@@ -2,11 +2,9 @@ import environ
 import os
 from pathlib import Path
 
-
 # Initialise environment variables
 env = environ.Env()
 environ.Env.read_env()
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,12 +20,19 @@ SECRET_KEY = env('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = bool(int(os.environ.get('DEBUG',0)))
+#print("DEBUG::", env('DEBUG'))
+DEBUG=env('DEBUG')
+print("DEBUG::", DEBUG)
+
+#DEBUG = False
 
 ALLOWED_HOSTS = [
+    '0.0.0.0',
     'backend',
     'localhost',
     '127.0.0.1',
+    '*',
 ]
 
 
@@ -96,6 +101,7 @@ DATABASES = {
         'PASSWORD': env('DATABASE_PASS'),
         'HOST': env('DATABASE_HOST'),
         'PORT': '', # leave blank so the default port is selected
+#        'PORT': '', # leave blank so the default port is selected
     }
 }
 

@@ -1,26 +1,30 @@
 version: "3.8"
 
 services:
-  psql:
+  db:
     container_name: db
     image: "postgres:14.1-alpine"
     environment:
       - POSTGRES_DB=portfolio
       - POSTGRES_USER=heidless
       - POSTGRES_PASSWORD=havana11
-  django:
+  backend:
     container_name: backend
     build:
       context: ./backend
     env_file:
-      - ./backend/.env
+      - ./.env
+    environment:
+      - DEBUG=1
     ports:
-      - 8080:8080
+      - ${PORT}:${PORT}
+    expose:
+      - ${PORT}
     volumes:
       - ./backend:/backend
     depends_on:
-      - psql
-  react:
+      - db
+  frontend:
     container_name: frontend
     build:
       context: ./frontend
