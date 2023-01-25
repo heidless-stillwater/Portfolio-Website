@@ -7,16 +7,18 @@ from pathlib import Path
 env = environ.Env()
 environ.Env.read_env()
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 print("****************************")
 print("****************************")
 print("BASE_DIR:", BASE_DIR)
+print("DATABASE_NAME:", env('DATABASE_NAME'))
+print("DATABASE_USER:", env('DATABASE_USER'))
+print("DATABASE_PASS:", env('DATABASE_PASS'))
+print("SECRET_KEY:", env('SECRET_KEY'))
 print("****************************")
 print("****************************")
-
 
 SECRET_KEY = env('SECRET_KEY')
 
@@ -91,11 +93,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DATABASE_NAME'),
-        'USER': env('DATABASE_USER'),
-        'PASSWORD': env('DATABASE_PASS'),
-        'HOST': env('DATABASE_HOST'),
-        'PORT': '', # leave blank so the default port is selected
+        'NAME': 'portfolio',
+        'USER': 'heidless',
+        'PASSWORD': 'havana11',
+        'HOST': 'localhost',
+        'PORT': 5432, # leave blank so the default port is selected
     }
 }
 
@@ -161,9 +163,10 @@ CORS_ALLOWED_ORIGINS = [
  
 FILE_UPLOAD_PERMISSIONS=0o640
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = 'AKIAYUPGERUWX4LIA47Z'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'hpfolio-upload-bucket'
-AWS_QUERYSTRING_AUTH = False
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+#AWS_ACCESS_KEY_ID = 'AKIAYUPGERUWX4LIA47Z'
+#AWS_SECRET_ACCESS_KEY = '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'
+#AWS_STORAGE_BUCKET_NAME = 'hpfolio-upload-bucket'
+#AWS_QUERYSTRING_AUTH = False
