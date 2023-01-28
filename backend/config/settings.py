@@ -90,14 +90,22 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# sqlite DB
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'portfolio',
-        'USER': 'heidless',
+        'NAME': env('DATABASE_NAME'),
+        'USER': env('DATABASE_USER'),
         'PASSWORD': 'havana11',
         'HOST': 'localhost',
-        'PORT': 5432, # leave blank so the default port is selected
+        'PORT': '5432', # leave blank so the default port is selected
     }
 }
 

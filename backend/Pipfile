@@ -4,12 +4,19 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-psycopg2-binary = "*"
-pillow = "*"
-typing-extensions = "*"
-whitenoise = "*"
-boto3 = "*"
+pytz = "*"
+sqlparse = "*"
+django-environ = "*"
+django = "*"
+djangorestframework = "*"
+django-cors-headers = "*"
 django-storages = "*"
+boto3 = "*"
+whitenoise = "*"
+typing-extensions = "*"
+pillow = "*"
+psycopg2-binary = "*"
+asgiref = "*"
 
 [dev-packages]
 
